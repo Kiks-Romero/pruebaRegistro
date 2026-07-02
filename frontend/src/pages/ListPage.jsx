@@ -34,33 +34,36 @@ function ListPage() {
   }
 
   return (
-    <div>
-      <h1>People</h1>
+    <>
+      {people.length === 0 && <p>No hay personas registradas.</p>}
+      {people.length > 0 && (
+        <div>
+          <h1>People</h1>
 
-      <table border="1">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Birth Date</th>
-            <th>Age</th>
-          </tr>
-        </thead>
+          <table border="1">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Birth Date</th>
+                <th>Age</th>
+              </tr>
+            </thead>
 
-        <tbody>
-          {people.map((person) => (
-            <tr key={person.id}>
-              <td>{person.id}</td>
-
-              <td>{person.name}</td>
-
-              <td>{person.birthDate}</td>
-              <td>{calcularEdad(person.birthDate)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+            <tbody>
+              {people.map((person) => (
+                <tr key={person.id}>
+                  <td>{person.id}</td>
+                  <td>{person.name}</td>
+                  <td>{person.birthDate}</td>
+                  <td>{calcularEdad(person.birthDate)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </>
   );
 }
 
